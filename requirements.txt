@@ -1,0 +1,9 @@
+scipy==0.18.1
+tqdm==4.8.4
+scikit-image==0.12.3
+sshtunnel==0.1.2
+psycopg2==2.7.1
+numpy
+opencv-python==3.2.0.7
+pandas==0.20.2
+

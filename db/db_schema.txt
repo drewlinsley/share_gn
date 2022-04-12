@@ -1,0 +1,12 @@
+DROP TABLE IF EXISTS experiments
+DROP TABLE IF EXISTS performance
+DROP TABLE IF EXISTS in_process
+
+CREATE TABLE experiments (_id bigserial primary key, experiment varchar, model varchar, train_dataset varchar, val_dataset varchar, validation_period int, validation_steps int, shuffle_val boolean, shuffle_train boolean, lr float, train_loss_function varchar, val_loss_function varchar, score_function varchar, optimizer varchar, train_batch_size int, val_batch_size int, epochs int, train_augmentations json, val_augmentations json, save_checkpoints int, save_activities boolean, save_weights boolean, save_gradients boolean, get_map boolean)
+
+CREATE TABLE performance (_id bigserial primary key, experiment_id int, experiment varchar, train_score float, train_loss float, val_score float, val_loss float, step int, ckpt_path varchar, summary_path varchar, results_path varchar, num_params int)
+
+CREATE TABLE in_process (experiment_id int, experiment varchar)
+
+ALTER TABLE in_process ADD CONSTRAINT unique_process UNIQUE (experiment_id, experiment)
+
